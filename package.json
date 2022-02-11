@@ -7,7 +7,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@module-federation/next-catchall": "https://github.com/module-federation/next-catchall.git",
+    "@module-federation/next-catchall": "git+https://github.com/Marcelx8/next-catchall.git#next-ssr",
     "@module-federation/nextjs-ssr": "0.0.1-beta.23",
     "lodash": "^4.17.21",
     "next": "12.0.8",
@@ -15,12 +15,11 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-ssr-prepass": "^1.5.0",
-    "webpack": "^5.66.0",
-    "webpack-merge": "^5.8.0",
-    "next-shared-logic": "file:../shared",
     "sass": "^1.49.0",
     "typescript": "^4.5.4",
+    "webpack": "^5.66.0",
     "webpack-federated-stats-plugin": "^2.0.8",
+    "webpack-merge": "^5.8.0",
     "zustand": "^3.6.9"
   },
   "devDependencies": {
