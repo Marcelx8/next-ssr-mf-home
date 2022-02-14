@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "set PORT=3001 && node server.js",
     "build": "next build",
-    "start": "set PORT=3001 && set NODE_ENV=production node server.js",
+    "start": "set PORT=3001 && set NODE_ENV=production && node server.js",
     "lint": "next lint"
   },
   "dependencies": {
