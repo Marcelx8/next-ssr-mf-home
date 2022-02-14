@@ -1,14 +1,14 @@
-import React from "react";
-import { createFederatedCatchAll } from "@module-federation/next-catchall";
+import dynamic from 'next/dynamic';
+const slugImport = import('../real-pages/[...slug]')
 
-const ErrorComponent = () => {
-  return <h1>There was an error trying to load route</h1>;
-};
-const NotFoundComponent = () => {
-  return <h1>4OH4 not found</h1>;
-};
-export default createFederatedCatchAll(
-  process.env.REMOTES,
-  ErrorComponent,
-  NotFoundComponent
-);
+const Page = dynamic(() => import('../real-pages/[...slug]'));
+// @ts-ignore
+Page.getInitialProps = async (ctx: any) => {
+  const getInitialProps = (await slugImport).default?.getInitialProps;
+  if (getInitialProps) {
+    return getInitialProps(ctx)
+  }
+  return {}
+}
+
+export default Page

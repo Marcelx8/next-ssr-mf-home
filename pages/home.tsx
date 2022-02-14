@@ -1,14 +1,16 @@
 import dynamic from 'next/dynamic';
-const PageImport = import('../real-pages/home')
-const Page = dynamic(() => PageImport)
 
-const Wrapper = (props: any) => {
-  return <Page {...props}></Page>
-}
-Wrapper.getInitialProps = async (ctx: any) => {
-  const gip = (await PageImport).default
-  {/* @ts-ignore */}
-    return gip.getInitialProps(ctx)
+const Home = dynamic(() => import('../real-pages/home'));
+
+// @ts-ignore
+Home.getInitialProps = async (ctx: any) => {
+  const homeImport = import('../real-pages/home')
+
+  const getInitialProps = (await homeImport).default?.getInitialProps;
+  if (getInitialProps) {
+    return getInitialProps(ctx)
   }
+  return {}
+}
 
-  export default Wrapper
+export default Home
