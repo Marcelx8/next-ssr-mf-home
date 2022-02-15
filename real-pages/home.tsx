@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 // Federated imports
 const useStore = (await import('../fed-store/uiStore')).default
 const Layout = dynamic(() => import('../fed-components/uiLayout'))
-const Header = dynamic(() => import('../fed-components/uiHeader'))
+// const Header = dynamic(() => import('../fed-components/uiHeader'))
 const Nav = dynamic(() => import('../fed-components/uiNav'))
 const Title = dynamic(() => import('../fed-components/uiTitle'))
 const Counter = dynamic(() => import('../fed-components/uiCounter'))
@@ -22,10 +22,10 @@ const RealHome: NextPage = ({ data }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Nav />
         <Layout>
-          <Header>
-            <Nav />
-          </Header>
+          {/* <Header> */}
+          {/* </Header> */}
           <Title text="Home" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
 

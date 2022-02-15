@@ -22,7 +22,6 @@ const remotes = (isServer) => {
     home: process.env.VERCEL_URL
     ? `home@https://module-federation-nextjs-ssr-home.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    // products: `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     ui: process.env.VERCEL_URL
     ? `ui@https://module-federation-nextjs-ssr-ui.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
@@ -79,6 +78,7 @@ module.exports = withPlugins(
     {
       experiments: {
         flushChunks: true,
+        hot: true,
       },
     }),
   ],

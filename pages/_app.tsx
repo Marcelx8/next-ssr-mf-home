@@ -1,13 +1,15 @@
-import { AppProps, AppContext } from 'next/app';
-import dynamic from 'next/dynamic';
-const AppImport = import('../real-pages/app');
-const App = dynamic(() => AppImport)
+import dynamic from "next/dynamic";
+const page = import("../real-pages/app");
 
-const Shell = (props: AppProps) => {
-  return <App {...props}></App>
-}
-Shell.getInitialProps = async (ctx: AppContext) => {
-  const gip = (await AppImport).default
-  return gip.getInitialProps(ctx)
-}
-export default Shell
+const App = dynamic(() => import("../real-pages/app"));
+// @ts-ignore
+App.getInitialProps = async (ctx: any) => {
+  const getInitialProps = (await page).default?.getInitialProps;
+
+  if (getInitialProps) {
+    return getInitialProps(ctx);
+  }
+  return {};
+};
+
+export default App;
