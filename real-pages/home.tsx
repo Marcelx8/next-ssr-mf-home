@@ -6,14 +6,15 @@ import dynamic from 'next/dynamic'
 // Federated imports
 const useStore = (await import('../fed-store/uiStore')).default
 const Layout = dynamic(() => import('../fed-components/uiLayout'))
-// const Header = dynamic(() => import('../fed-components/uiHeader'))
 const Nav = dynamic(() => import('../fed-components/uiNav'))
 const Title = dynamic(() => import('../fed-components/uiTitle'))
 const Counter = dynamic(() => import('../fed-components/uiCounter'))
 
+
 const RealHome: NextPage = ({ data }: any) => {
 
-  const { count, increment, decrement } = useStore()
+  const { count, increment, decrement } = useStore();
+
   return (
     <>
       <Head>
@@ -24,15 +25,13 @@ const RealHome: NextPage = ({ data }: any) => {
       <main>
         <Nav />
         <Layout>
-          {/* <Header> */}
-          {/* </Header> */}
           <Title text="Home" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
 
           {data && <h3>
             <span style={{ fontWeight: 'bold' }}>Data from API:</span>{' '}
             <pre>{JSON.stringify(data, null, 2)}</pre>
-            </h3>}
+          </h3>}
 
         </Layout>
       </main>
