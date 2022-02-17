@@ -1,8 +1,8 @@
 {
   "name": "home",
   "scripts": {
-    "dev": "set PORT=3001 && node server.js",
-    "build": "next build",
+    "dev": "webpack --config serverContainer.webpack.js && set PORT=3001 node server.js",
+    "build": "webpack --config serverContainer.webpack.js && next build",
     "start": "set PORT=3001 && set NODE_ENV=production && node server.js",
     "lint": "next lint"
   },
