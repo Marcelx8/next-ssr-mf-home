@@ -1,6 +1,5 @@
 import type { AppContext, AppProps } from 'next/app'
 import App from 'next/app';
-import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../theme';
@@ -38,7 +37,7 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
     typeof window !== "undefined"
       // @ts-ignore
       ? __NEXT_DATA__.props.navData
-      : fetch(`${remotes.shell.apiPath}/nav`).then((res) => {
+      : fetch(`${remotes.home.apiPath}/nav`).then((res) => {
         return res.json()
       }),
   ]);

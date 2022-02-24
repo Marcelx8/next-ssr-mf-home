@@ -1,6 +1,3 @@
-// /**
-//  * @type {import('next').NextConfig}
-//  **/
 const { withFederatedSidecar } = require('@module-federation/nextjs-ssr');
 const withPlugins = require('next-compose-plugins');
 
